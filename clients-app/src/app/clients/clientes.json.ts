@@ -1,0 +1,81 @@
+import { Client } from './client';
+
+export const CLIENTS: Client[] = [
+  {
+    id: 1,
+    name: 'Jorge',
+    lastname: 'Velasquez',
+    email: 'jv@mail.com',
+    createAt: '2023-01-13',
+  },
+  {
+    id: 2,
+    name: 'Isaac',
+    lastname: 'Velasquez',
+    email: 'iv@mail.com',
+    createAt: '2023-01-13',
+  },
+  {
+    id: 3,
+    name: 'Katherine',
+    lastname: 'Caceres',
+    email: 'kc@mail.com',
+    createAt: '2023-01-13',
+  },
+  {
+    id: 4,
+    name: 'Pablo',
+    lastname: 'Picapiedra',
+    email: 'pp@mail.com',
+    createAt: '2023-01-13',
+  },
+  {
+    id: 5,
+    name: 'Carlo',
+    lastname: 'Magno',
+    email: 'cm@mail.com',
+    createAt: '2023-01-13',
+  },
+  {
+    id: 6,
+    name: 'Anibal',
+    lastname: 'Letter',
+    email: 'al@mail.com',
+    createAt: '2023-01-13',
+  },
+  {
+    id: 7,
+    name: 'Juanita',
+    lastname: 'Juarez',
+    email: 'jj@mail.com',
+    createAt: '2023-01-13',
+  },
+  {
+    id: 8,
+    name: 'Pedro',
+    lastname: 'Conga',
+    email: 'pc@mail.com',
+    createAt: '2023-01-13',
+  },
+  {
+    id: 9,
+    name: 'Manuel',
+    lastname: 'Morales',
+    email: 'mm@mail.com',
+    createAt: '2023-01-13',
+  },
+  {
+    id: 10,
+    name: 'Lupe',
+    lastname: 'Lopera',
+    email: 'll@mail.com',
+    createAt: '2023-01-13',
+  },
+  {
+    id: 11,
+    name: 'Juan',
+    lastname: 'Fernandez',
+    email: 'jf@mail.com',
+    createAt: '2023-01-13',
+  },
+];

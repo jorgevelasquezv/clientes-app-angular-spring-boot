@@ -1,0 +1,39 @@
+<div class="card border-dark my-3">
+  <div class="card-header">Clientes</div>
+  <div class="card-body">
+    <h5 class="card-title">Listado de clientes</h5>
+    <div class="my-2 text-start">
+      <button class="btn btn-outline-primary" type="button" [routerLink]="['/clients/form']">Crear Cliente</button>
+    </div>
+<div *ngIf="clients.length === 0" class="alert alert-info">
+No hay registros en la base de datos
+</div>
+
+    <table class="table table-bordered table-striped" *ngIf="clients.length > 0">
+    <caption>Listado de clientes</caption>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Email</th>
+          <th>Fecha</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let client of clients">
+          <td>{{ client.id }}</td>
+          <td>{{ client.name }}</td>
+          <td>{{ client.lastname }}</td>
+          <td>{{ client.email }}</td>
+          <td>{{ client.createAt }}</td>
+          <td><button class="btn btn-outline-warning" type="button" name="button" [routerLink]="['/clients/form', client.id]">Editar</button></td>
+          <td><button class="btn btn-outline-danger" type="button" name="button" (click)="delete(client)" >Eliminar</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
