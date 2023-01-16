@@ -36,7 +36,6 @@ public class ClientServiceImpl implements IClientsService{
     @Override
     @Transactional
     public void delete(Long id) {
-        Optional<Client> clientOp = clientDao.findById(id);
-        clientOp.ifPresent(client -> clientDao.delete(client));
+        clientDao.deleteById(id);
     }
 }

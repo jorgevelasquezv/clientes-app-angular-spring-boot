@@ -1,6 +1,9 @@
 package co.com.jorge.springboot.backend.apirest.models.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -18,12 +21,18 @@ public class Client implements Serializable {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "nombre")
+    @Column(name = "nombre", nullable = false)
+    @NotEmpty
+    @Size(min = 4, max = 12)
     private String name;
 
     @Column(name = "apellido")
+    @NotEmpty
     private String lastname;
 
+    @Column(nullable = false, unique = true)
+    @NotEmpty
+    @Email
     private String email;
 
     @Column(name = "create_at")

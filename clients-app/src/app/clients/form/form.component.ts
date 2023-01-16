@@ -13,38 +13,62 @@ import Swal from 'sweetalert2';
 export class FormComponent {
   public client: Client = new Client();
 
-  public title: String = 'Crear cliente';
+  public title: string = 'Crear cliente';
 
+  public errors: string[] = [];
+  
   constructor(
     private clientService: ClientService,
     private router: Router,
     private activatedRoute: ActivatedRoute
-  ) { }
-  
+  ) {}
+
   ngOnInit() {
-    this.loadClient()
+    this.loadClient();
   }
 
   public loadClient(): void {
-    this.activatedRoute.params.subscribe(params => {
+    this.activatedRoute.params.subscribe((params) => {
       let id = params['id'];
       if (id) {
-        this.clientService.getClient(id).subscribe(client => this.client = client);
+        this.clientService
+          .getClient(id)
+          .subscribe((response) => (this.client = response.cliente));
       }
-    })
+    });
   }
 
   public create(): void {
-    this.clientService.create(this.client).subscribe((client) => {
-      this.router.navigate(['/clients']);
-      Swal.fire('Nuevo cliente', `Cliente ${client.name}`, 'success');
+    this.clientService.create(this.client).subscribe({
+      next: (response) => {
+        this.router.navigate(['/clients']);
+        Swal.fire(
+          'Nuevo cliente',
+          `${response.mensaje} ${response.cliente.name}`,
+          'success'
+        );
+      },
+      error: (err) => {
+        this.errors = err.error.errors as string[];
+      }
     });
   }
 
   public update(): void {
-    this.clientService.update(this.client).subscribe(client => {
-      this.router.navigate(['/clients']);
-      Swal.fire('Cliente actualizado', `Cliente ${client.name} actualizado con exito`, 'success')
-    })
+    this.clientService.update(this.client).subscribe({
+      next: (response) => {
+        this.router.navigate(['/clients']);
+        Swal.fire(
+          'Cliente actualizado',
+          `${response.mensaje} ${response.cliente.name}`,
+          'success'
+        );
+      },
+      error: (err) => {
+        this.errors = err.error.errors as string[];
+      },
+      complete: () => console.info('complete'),
+    });
   }
+
 }
